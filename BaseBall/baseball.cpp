@@ -38,6 +38,12 @@ private:
 			result.solved = true;
 			result.strike = 3;
 		}
+		else {
+			for (int i = 0; i < 3; ++i) {
+				if (guessNumber[i] == question[i]) ++result.strike;
+				else ++result.ball;
+			}
+		}
 
 		return result;
 	}
