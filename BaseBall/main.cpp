@@ -45,6 +45,22 @@ TEST_F(BaseballFixture, ReturnSolvedResult2Strike1Ball2nd) {
 	EXPECT_EQ(result.ball, 1);
 }
 
+TEST_F(BaseballFixture, ReturnSolvedResult1Strike2Ball1st) {
+	GuessResult result = game.guess("138");
+
+	EXPECT_FALSE(result.solved);
+	EXPECT_EQ(result.strike, 1);
+	EXPECT_EQ(result.ball, 2);
+}
+
+TEST_F(BaseballFixture, ReturnSolvedResult1Strike2Ball2nd) {
+	GuessResult result = game.guess("027");
+
+	EXPECT_FALSE(result.solved);
+	EXPECT_EQ(result.strike, 1);
+	EXPECT_EQ(result.ball, 2);
+}
+
 
 
 int main(int argc, char **argv) {
