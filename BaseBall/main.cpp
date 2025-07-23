@@ -3,7 +3,10 @@
 
 class BaseballFixture : public ::testing::Test {
 public:
-	Baseball game{ "123" };
+	void SetUp() override {
+		game = Baseball("123");
+	}
+
 	void assertIllegalArgumane(string input) {
 		try {
 			game.guess(input);
@@ -13,6 +16,8 @@ public:
 			// PASS
 		}
 	}
+protected:
+	Baseball game;
 };
 
 TEST_F(BaseballFixture, ThrowExceptionWhenInvalidCase) {
