@@ -20,7 +20,6 @@ public:
 	}
 private:
 	GuessResult assertIllegalArgument(const string& guessNumber) {
-		GuessResult result{ false, 0, 0 };
 		if (guessNumber.length() != 3) {
 			throw length_error("Must be three letters");
 		}
@@ -34,6 +33,15 @@ private:
 			throw invalid_argument("Must not have duplicated number");
 		}
 
+		return checkGuessWithQueston(guessNumber);
+	}
+
+	bool isDuplicatedNumber(const string& guessNumber) {
+		return (guessNumber[0] == guessNumber[1] || guessNumber[0] == guessNumber[2] || guessNumber[1] == guessNumber[2]);
+	}
+
+	GuessResult checkGuessWithQueston(const string& guessNumber) {
+		GuessResult result{ false, 0, 0 };
 		if (guessNumber == question) {
 			result.solved = true;
 			result.strike = 3;
@@ -44,12 +52,7 @@ private:
 				else ++result.ball;
 			}
 		}
-
 		return result;
-	}
-
-	bool isDuplicatedNumber(const string& guessNumber) {
-		return (guessNumber[0] == guessNumber[1] || guessNumber[0] == guessNumber[2] || guessNumber[1] == guessNumber[2]);
 	}
 
 	string question;
