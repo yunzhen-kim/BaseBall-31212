@@ -16,10 +16,10 @@ public:
 	explicit Baseball(const string& question) : question{ question } {}
 
 	GuessResult guess(const string& guessNumber) {
-		return assertIllegalArgument(guessNumber);
+		return checkGuessNumberValidAndIfMatchedToQuestion(guessNumber);
 	}
 private:
-	GuessResult assertIllegalArgument(const string& guessNumber) {
+	GuessResult checkGuessNumberValidAndIfMatchedToQuestion(const string& guessNumber) {
 		if (guessNumber.length() != 3) {
 			throw length_error("Must be three letters");
 		}
